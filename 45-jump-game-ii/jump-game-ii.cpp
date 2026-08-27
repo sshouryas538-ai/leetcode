@@ -6,6 +6,7 @@ public:
         for(int i=0;i<n-1;i++){
             check = max(check,nums[i]+i);
             if(i == current){
+                if(check == current) return -1;
                 ans++;
                 current = check;
                 if(current >= n-1) break;
