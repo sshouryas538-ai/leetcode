@@ -9,22 +9,12 @@ public:
         }if(cnt == 2) return true;
         if(arr[i] == 0) continue;
         int check = arr[i]*2;
-        if(check < 0){
-            int low = 0, high = arr.size()-1;
+        int low = 0, high = arr.size()-1;
             while(low <= high){
                 int mid = low + (high - low)/2;
                 if(arr[mid] == check) return true;
                 else if(arr[mid] > check) high = mid -1;
                 else low = mid +1;
-            }
-        }else{
-            int low = 0, high = arr.size()-1;
-            while(low <= high){
-                int mid = low + (high - low)/2;
-                if(arr[mid] == check) return true;
-                else if(arr[mid] < check) low = mid +1;
-                else high = mid -1;
-        }
        }
        }
        return false;
