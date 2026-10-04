@@ -1,20 +1,32 @@
 class Solution {
 public:
     bool checkIfExist(vector<int>& arr) {
-        set<int>st;
         int cnt = 0;
-      for(auto it:arr){
-        if(it == 0){
+       sort(arr.begin(),arr.end());
+       for(int i=0;i<arr.size();i++){
+        if(arr[i] == 0){
             cnt++;
+        }if(cnt == 2) return true;
+        if(arr[i] == 0) continue;
+        int check = arr[i]*2;
+        if(check < 0){
+            int low = 0, high = arr.size()-1;
+            while(low <= high){
+                int mid = low + (high - low)/2;
+                if(arr[mid] == check) return true;
+                else if(arr[mid] > check) high = mid -1;
+                else low = mid +1;
+            }
+        }else{
+            int low = 0, high = arr.size()-1;
+            while(low <= high){
+                int mid = low + (high - low)/2;
+                if(arr[mid] == check) return true;
+                else if(arr[mid] < check) low = mid +1;
+                else high = mid -1;
         }
-        if(cnt == 2) return true;
-        if(it != 0) st.insert(it);
-      }
-
-      for(auto it:arr){
-        int check = it*2;
-        if(st.find(check) != st.end()) return true;
-      }
-      return false;
+       }
+       }
+       return false;
     }
 };
