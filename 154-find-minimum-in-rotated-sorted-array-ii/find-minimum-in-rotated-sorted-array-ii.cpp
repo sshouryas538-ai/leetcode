@@ -1,10 +1,14 @@
 class Solution {
 public:
-    int findMin(vector<int>& nums) {
-        int ans = INT_MAX;
-        for(auto it:nums){
-            ans = min(ans,it);
-        }
-        return ans;
+    int findMin(vector<int>& arr) {
+       int mini = INT_MAX;
+       int low = 0, high = arr.size()-1;
+       while(low<high){
+        int mid = low + (high - low)/2;
+        if(arr[mid] < arr[high]) high = mid;
+        else if(arr[mid] > arr[high]) low = mid +1;
+        else high--;
+       }
+       return arr[low];
     }
 };
