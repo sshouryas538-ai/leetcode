@@ -1,29 +1,21 @@
 class Solution {
 public:
     int countCharacters(vector<string>& words, string chars) {
-        multiset<char> temp;
         int ans = 0;
-
-        for(char c : chars)
-            temp.insert(c);
-
-        for(string word : words) {
+        int freq[26] = {};
+        for(char it:chars) freq[it-'a']++;
+        for(string word:words){
             bool check = true;
-            multiset<char> st = temp;
-
-            for(char c : word) {
-                if(st.find(c) == st.end()) {
+            int temp [26] = {0};
+            for(char it:word){
+                temp[it-'a']++;
+                if(temp[it-'a'] > freq[it-'a']){
                     check = false;
                     break;
                 }
-
-                st.erase(st.find(c));
             }
-
-            if(check)
-                ans += word.size();
+            if(check) ans += word.size();
         }
-
         return ans;
     }
 };
