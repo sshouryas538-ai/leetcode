@@ -4,19 +4,11 @@ public:
         int need = 0,ans = 0;
         for(int i=0;i<s.size();i++){
             if(s[i] == '('){
-                if(need % 2 == 1){
-                    ans++;
-                    need--;
-                }
+                if(need%2)ans++,need--;
                 need += 2;
             }
-            else{
-                need--;
-                if(need<0){
-                    ans++;
-                    need = 1;
-                }
-            }
+            else if(need == 0) ans++,need = 1;
+            else need--;
         }
         return ans+need;
     }
