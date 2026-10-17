@@ -2,7 +2,7 @@ class Solution {
 public:
     bool isHappy(int n) {
         set<int>st;
-        for(int i=10;i>=0;i--){
+        while(true){
             int check = 0;
             while(n>0){
                 int temp = n%10;
