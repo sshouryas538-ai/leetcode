@@ -21,7 +21,7 @@ public:
         if(!root) return -1;
         vector<int>check;
         inorder(root,check);
-        sort(check.begin(),check.end());
+        // sort(check.begin(),check.end());
         return check[k-1];
     }
 };
